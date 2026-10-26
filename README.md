@@ -43,26 +43,109 @@ Resize the frame and rotate it using OpenCV functions, then display the processe
 ## 💻 Program
 
 ### Developed By:
-**Name:** ____________________________  
+Name: Priyadharshini S
 
-### Register No:
-____________________________  
+Register No: 212225230218
 
----
+  
+1-Capture the image
+```
+import cv2
+import matplotlib.pyplot as plt
+from IPython.display import clear_output
+import time
+```
+```
+cap = cv2.VideoCapture(0)
+ret, frame = cap.read()
+if ret:
+    cv2.imwrite("captured_frame.jpg", frame)
+cap.release()
+```
+```
+captured_image = cv2.imread('captured_frame.jpg')
+```
+```
+plt.imshow(captured_image[:,:,::-1])
+plt.title('Captured Frame')
+plt.axis('off')
+plt.show()
+```
+2-Display the video
+
+```
+cap = cv2.VideoCapture(0)
+
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
+        break
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
+cap.release()
+```
+
+3- Display the video by resizing the window
+```
+cap = cv2.VideoCapture(0)
+
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
+        break
+    resized_frame = cv2.resize(frame, (100, 150))  # Resize to 320x240
+    frame_rgb = cv2.cvtColor(resized_frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
+cap.release()
+
+```
+4- Rotate and display the video
+```
+cap = cv2.VideoCapture(0)
+
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
+        break
+    rotated_frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+    frame_rgb = cv2.cvtColor(rotated_frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
+cap.release()
+```
 
 ## Output
 
+
 ### i) Write the frame as JPG image
-Captured image is saved as `captured_image.jpg`
+<img width="577" height="287" alt="image" src="https://github.com/user-attachments/assets/d792f7c3-4c82-47e7-bda8-6ae6ba71106b" />
+
 
 ### ii) Display the video
-Live webcam video is displayed
+<img width="506" height="372" alt="image" src="https://github.com/user-attachments/assets/1fd4f33c-87a0-4073-8d63-c1eec43fe020" />
+
 
 ### iii) Display the video by resizing the window
-Video is shown in resized resolution (640 × 480)
+<img width="342" height="382" alt="image" src="https://github.com/user-attachments/assets/63ddff72-0c21-41b4-8c18-ae59597aad5b" />
+
 
 ### iv) Rotate and display the video
-Video is displayed after rotation (90° clockwise)
+<img width="292" height="367" alt="image" src="https://github.com/user-attachments/assets/a9f7ac94-2d4d-4cdf-906c-cd04ccace0a7" />
+
 
 ---
 
